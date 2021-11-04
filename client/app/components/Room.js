@@ -92,7 +92,6 @@ export const Room = (props) => {
     useEffect(() => {
         if(players.length > 1 && state === 'reveal') {
             const isAllContinue = players.filter((player) => player?.isContinue).length === players.length;
-            console.log({ isAllContinue  })
             if(isAllContinue) {
                 const thisPlayerId = localStorage.getItem("playerId");
                 const thisPlayer = players.find((player) => String(player._id) === String(thisPlayerId));

@@ -149,7 +149,6 @@ export const usePainter = () => {
       if (!ctx || !ctx.current || !canvas || !canvas.current) {
         return;
       }
-      console.log(canvas.current.toDataURL("image/png")) // save this to database!!
       // setImage(canvas.current.toDataURL("image/png"));
       return canvas.current.toDataURL("image/png");
     }, [])

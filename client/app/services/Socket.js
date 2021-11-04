@@ -36,14 +36,12 @@ export class Socket {
     async getPlayers(callback) {
         if(!this.socket.hasListeners('getPlayers')) {
             this.socket.on('getPlayers', (players) => {
-                console.log({ players })
                 callback(players);
             })
         }
     }
 
     async updatePlayers(roomId) {
-        console.log("updatePlayers", { roomId });
         this.socket.emit('players', { roomId }, function (err) {
             if(err) console.error(err);
         });
@@ -69,7 +67,6 @@ export class Socket {
         const player = await apiPlayer.getPlayer(roomId, playerName);
         const { isAlive } = await api.isRoomAlive(roomId);
         if(roomId && player && player?.lastRoomId === roomId) {
-            console.log("rejoin", roomId, isAlive);
             if(isAlive) {
                 this.socket.emit('rejoin', { roomId: roomId, playerId: localStorage.getItem("playerId")  }, function (err) {
                     if(err) console.error(err);
@@ -80,10 +77,6 @@ export class Socket {
         } else {
             callback();
         }
-    }
-
-    async printSomthing() {
-        console.log("testestestsetsetsetsetsetetstsetstset");
     }
 }
 
