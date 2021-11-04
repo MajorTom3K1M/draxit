@@ -1,9 +1,9 @@
 FROM node:15
 ENV NODE_ENV=production
-ENV PORT=8080
+ENV PORT=80
 WORKDIR /app
-COPY package.json .
+COPY package.json /app
 RUN npm install --force
-RUN npm install --save-dev webpack-cli@3.1.2
-COPY . ./
-CMD ["npm", "run", "start:dev"]
+EXPOSE $PORT
+COPY . /app
+CMD ["npm", "start"]
