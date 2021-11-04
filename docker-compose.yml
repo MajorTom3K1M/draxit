@@ -1,0 +1,19 @@
+version: '3'
+services:
+  draxit:
+    container_name: draxit
+    restart: always
+    build: .
+    environment:
+      - NODE_ENV=production
+      - MONGODB=mongodb://mongo:27017/draxit
+      - PORT=3000
+    ports:
+      - '80:3000'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
