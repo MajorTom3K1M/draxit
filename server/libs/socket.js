@@ -38,6 +38,8 @@ module.exports = (server) => {
                     socket['data'] = { roomId, playerId };
                     await RoomControllers.reConnect(roomId, playerId);
                     io.to(roomId).emit('getPlayers', await RoomControllers.getPlayers(roomId));
+
+
                 }
 
             } catch(err) {

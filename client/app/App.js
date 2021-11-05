@@ -3,6 +3,7 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import { Home } from "./components/Home";
 import { Room } from "./components/Room";
 import { GameContainer } from "./components/GameContainer";
+import { Button } from "./components/Button";
 
 const App = () => {
     const history = useHistory();
@@ -52,9 +53,9 @@ const App = () => {
                             <div className="name-list"></div>
                         </div>
                     </div>
-                    <button className="submit-btn">
+                    <Button className="submit-btn">
                             Continue
-                    </button>
+                    </Button>
                 </GameContainer>
             </Route>
             {/* <Playboard />  */}

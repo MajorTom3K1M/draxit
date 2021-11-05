@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Button } from './Button';
 
 export const Toolbar = ({
     currentWidth,
@@ -90,12 +91,12 @@ export const Toolbar = ({
                     )}
             </div>
             <div>
-                <button
+                <Button
                     className="btn btn--main btn--block"
                     onClick={submit}
                 >
                     Done
-                </button>
+                </Button>
                 <button className="btn btn--block" onClick={handleClear}>
                     Clear
                 </button>

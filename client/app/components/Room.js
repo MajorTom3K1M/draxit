@@ -9,6 +9,7 @@ import { api as player } from '../services/PlayerAPI';
 import { Waiting } from './Waiting';
 import { GameContainer } from './GameContainer';
 import { Whiteboard } from './Whiteboard';
+import { Button } from './Button'
 
 export const Room = (props) => {
     let isStoryTeller;
@@ -191,9 +192,8 @@ export const Room = (props) => {
 
     const selectCard = async (cardId) => {
         const playerId = localStorage.getItem("playerId");
-        await card.selectCard(id, cardId, playerId).then(() => {
-            setSelectCardId(cardId);
-        });
+        setSelectCardId(cardId);
+        await card.selectCard(id, cardId, playerId);
     }
 
     const clickContinue = async () => {
@@ -231,9 +231,9 @@ export const Room = (props) => {
                             )
                         })}
                     </div>
-                    <button className="submit-btn" onClick={clickContinue}>
+                    <Button className="submit-btn" onClick={clickContinue}>
                         Continue
-                    </button>
+                    </Button>
                 </GameContainer>
             )
         case "guessing":
@@ -255,7 +255,13 @@ export const Room = (props) => {
                             const selected = card._id === selectCardId;
                             return (
                                 <div className="card-container" key={index}>
-                                    <img className={isStoryTeller ? "not-selected" : (isSelected ? (selected ? "selected" : "not-selected") : "")} src={`data:image/png;base64,${card.cardImage}`} onClick={() => selectCard(card._id)}/>
+                                    {
+                                        isStoryTeller ? 
+                                            <img className="not-selected" src={`data:image/png;base64,${card.cardImage}`} />
+                                            :
+                                            <img className={(isSelected ? (selected ? "selected" : "not-selected") : "")} src={`data:image/png;base64,${card.cardImage}`} onClick={() => selectCard(card._id)}/> 
+                                    }
+                                    {/* <img className={isStoryTeller ? "not-selected" : (isSelected ? (selected ? "selected" : "not-selected") : "")} src={`data:image/png;base64,${card.cardImage}`} onClick={() => selectCard(card._id)}/> */}
                                 </div>
                             )
                         })}
@@ -288,9 +294,9 @@ export const Room = (props) => {
                             onKeyDown={(e) => handleKeyDown(e)}
                             onChange={(e) => setStory(e.target.value)}
                         />
-                        <button className="submit-btn" onClick={() => submitStory(story)}>
+                        <Button className="submit-btn" onClick={() => submitStory(story)}>
                             Submit
-                        </button>
+                        </Button>
                     </GameContainer>
                 )
             } else {
@@ -328,13 +334,13 @@ export const Room = (props) => {
                         <div className="room-info">
                             You can click "START" when at least 4 players have joined. ( {players.length === 0 ? "" : ` ${players.length}`} have joined )
                         </div>
-                        <button className="leave-btn" onClick={leaveRoom}>
+                        <Button className="leave-btn" onClick={leaveRoom}>
                             leave
-                        </button>
+                        </Button>
                         {" "}
-                        <button className="leave-btn" disabled={players.length >= 2 ? false : true } style={players.find((player) => player._id === localStorage.getItem("playerId"))?.isRoomOwner ? {} : { display: 'none' }} onClick={startGame}>
+                        <Button className="leave-btn" disabled={players.length >= 2 ? false : true } style={players.find((player) => player._id === localStorage.getItem("playerId"))?.isRoomOwner ? {} : { display: 'none' }} onClick={startGame}>
                             start
-                        </button>
+                        </Button>
                     </div>
                 </Lobby>
             );

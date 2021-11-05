@@ -37,6 +37,7 @@ export class PlayerAPI {
             return res;
         } catch (err) {
             console.log("failed to continue game:", err);
+            throw err;
         }
     }
 }

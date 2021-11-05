@@ -97,7 +97,7 @@ const reConnect = async (roomId, playerId) => {
         room = await RoomModel.findOneAndUpdate({ roomId: roomId, isDeleted: false }, { $push: { players: ObjectId(playerId) }, $inc : { playerCount: 1 } }, { new: true });
     }
 
-    return { success: true };
+    return { success: true, room: isExisted || {} };
 }
 
 const leaveRoom = async (roomId, playerId) => {

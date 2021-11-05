@@ -19,6 +19,7 @@ export class LobbyAPI {
             return res.roomId;
         } catch(err) {
             console.log("failed to create room:", err);
+            throw err;
         }
     }
 
@@ -30,6 +31,7 @@ export class LobbyAPI {
             return res;
         } catch(err) {
             console.log("failed to join room:", err);
+            throw err;
         }
     }
 
@@ -39,6 +41,7 @@ export class LobbyAPI {
             this.socket.leaveRoom(roomId);
         } catch(err) {
             console.log("failed to leave room:", err);
+            throw err;
         }
     }
 
@@ -48,6 +51,7 @@ export class LobbyAPI {
             return res;
         } catch(err) {
             console.log("failed to get room health:", err);
+            throw err;
         }
     }
 
@@ -63,6 +67,7 @@ export class LobbyAPI {
             return res;
         } catch (err) {
             console.log("failed to start game:", err);
+            throw err;
         }
     }
 
@@ -73,6 +78,7 @@ export class LobbyAPI {
             return res;
         } catch(err) {
             console.log("failed to set state:", err)
+            throw err;
         }
     }
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Lobby } from './Lobby';
 import { api } from '../services/LobbyAPI';
+import { Button } from './Button'
 
 export const Home = (props) => {
     const { history } = props;
@@ -76,9 +77,9 @@ export const Home = (props) => {
         }
     }
 
-    const createRoom = () => {
-        api.createRoom().then((roomId) => {
-            joinRoom(roomId, cName, true)
+    const createRoom = async () => {
+        await api.createRoom().then((roomId) => {
+            joinRoom(roomId, cName, true);
         }) 
     }
 
@@ -114,13 +115,13 @@ export const Home = (props) => {
                     className="input-field"
                 />
             </div>
-            <button
+            <Button
                 className="lobby-btn"
                 disabled={room.length !== roomIDLength || jName.length === 0}
                 onClick={() => joinRoom(room, jName)}
             >
                 join
-            </button>
+            </Button>
             <div className="error-msg">{errMsg}</div>
             <span className="title create-title">create lobby</span>
             <div className="input-info-area">
@@ -138,9 +139,9 @@ export const Home = (props) => {
                     className="input-field"
                 />
             </div>
-            <button className="lobby-btn" onClick={createRoom}>
+            <Button className="lobby-btn" onClick={createRoom}>
                 create
-            </button>
+            </Button>
         </Lobby>
     )
 }
