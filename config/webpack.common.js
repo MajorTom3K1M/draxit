@@ -11,10 +11,10 @@ module.exports = {
         publicPath: '/',
     },
     resolve: {
-      extensions: ['.js', '.json', '.css', '.scss', '.html'],
-      alias: {
-        app: 'client/app',
-      },
+        extensions: ['.js', '.json', '.css', '.scss', '.html'],
+        alias: {
+            app: 'client/app',
+        },
     },
     module: {
         rules: [
@@ -33,27 +33,31 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
-              },
+            },
             // Load fonts
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]',
-                    outputPath: 'fonts/',
-                    publicPath: url => `../fonts/${url}`
-                }
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/',
+                        publicPath: url => `../fonts/${url}`
+                    }
                 }]
             }
         ]
     },
-    plugins:[
+    plugins: [
         new htmlWebpackPlugin({
             template: helpers.root("client/public/index.html"),
             inject: 'body'
         }),
         new webpack.HotModuleReplacementPlugin(),
-
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+            'process.env.PORT': JSON.stringify(process.env.PORT),
+            'process.env.MONGODB': JSON.stringify(process.env.MONGODB),
+        }),
     ]
 }

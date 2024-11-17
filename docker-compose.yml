@@ -6,10 +6,10 @@ services:
     build: .
     environment:
       - NODE_ENV=production
-      - MONGODB=mongodb://mongo:27017/draxit
+      - MONGODB=mongodb://mongo_user:mongo_password@mongo:27017/draxit?authSource=admin
       - PORT=3000
     ports:
-      - '80:3000'
+      - '3000:3000'
     links:
       - mongo
   mongo:
@@ -17,3 +17,12 @@ services:
     image: mongo
     ports:
       - '27017:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo_user
+      - MONGO_INITDB_ROOT_PASSWORD=mongo_password
+      - MONGO_INITDB_DATABASE=draxit
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
