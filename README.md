@@ -100,3 +100,5 @@ A real-time multiplayer web game inspired by the original Dixit board game, with
 4. **Access the Game**:
 
    Open your browser and navigate to `http://localhost:2000` to start playing.
+
+## Screenshot
