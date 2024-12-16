@@ -8,7 +8,7 @@ A real-time multiplayer web game inspired by the original Dixit board game, with
 - **Random Storyteller**: In each round, a random player becomes the storyteller who types a word or phrase.
 - **Drawing Phase**: Other players draw an image representing the word provided by the storyteller.
 - **Guessing Phase**: Players guess which drawing matches the storyteller's word.
-- **Scoring**: Points are awarded based on correct guesses and how well the drawings represent the word. (Unfinished)
+- ❌ **Scoring**: Points are awarded based on correct guesses and how well the drawings represent the word. (Unfinished)
 
 ## Key Features
 
@@ -102,3 +102,7 @@ A real-time multiplayer web game inspired by the original Dixit board game, with
    Open your browser and navigate to `http://localhost:2000` to start playing.
 
 ## Screenshot
+![Home](https://github.com/MajorTom3K1M/draxit/blob/main/screenshot/screenshot-1.png)
+![Wait Room](https://github.com/MajorTom3K1M/draxit/blob/main/screenshot/screenshot-2.png)
+![Drawing Canvas](https://github.com/MajorTom3K1M/draxit/blob/main/screenshot/screenshot-3.png)
+![Guess](https://github.com/MajorTom3K1M/draxit/blob/main/screenshot/screenshot-4.png)
